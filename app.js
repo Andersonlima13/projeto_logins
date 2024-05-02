@@ -2,14 +2,17 @@ const express = require('express')
 const app = express()
 
 app.get("/", async (req,res) => {
-    res.send("javsacript maldito")
+    res.send("PAGINA INICIAL AQUI")
 }) 
 
 app.listen(8000,() => {
-    console.log("servidor rodando na porta 8080")
+    console.log("Servidor iniciado com sucesso: http://localhost:8000")
 })
 
 const { Pool } = require('pg')
+
+
+// MUDAR PARA DOTENV
 
 const pool = new Pool({
     user: 'postgres',
@@ -19,31 +22,29 @@ const pool = new Pool({
     port:5432,
 })
 
+
+ // CONEXAO DB
 pool.connect((err, client, release) => {
     if (err) {
       console.error('Erro ao conectar ao banco de dados:', err);
     } else {
       console.log('Conexão bem-sucedida com o banco de dados!');
-      // A partir daqui, você pode realizar consultas ao banco de dados
+
     }
   });
 
-  async function consultarAlunos() {
+
+
+// CONSULTA DE TESTE DO BANCO DE DADOS , IRÁ RETORNAR TODOS OS ALUNOS CADASTRADOS NO BANCO DE DADOS
+  app.get("/Aluno", async (req, res) => {
     try {
-      await client.connect(); // Conectar ao banco de dados
-  
-      // Executar consulta SQL
-      const result = await client.query('SELECT * FROM aluno');
-  
-      // Exibir o resultado no console
-      console.log('Resultado da consulta:');
-      console.table(result.rows); // Mostra os resultados em formato de tabela
-  
-      await client.end(); // Encerrar conexão com o banco de dados
-    } catch (err) {
-      console.error('Erro ao consultar alunos:', err);
+        const result = await pool.query('SELECT * FROM ALUNO');
+        // 
+        const alunos = result.rows;
+        
+        res.send(alunos);
+    } catch (error) {
+        console.error('Erro ao executar a consulta:', error);
+        res.status(500).send('Erro ao executar a consulta.');
     }
-  }
-  
-  // Chamar a função para consultar os alunos
-consultarAlunos();
+});
