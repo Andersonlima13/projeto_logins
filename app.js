@@ -1,9 +1,11 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser'); // Para analisar o corpo da solicitação POST
 
-app.get("/", async (req,res) => {
-    res.send("PAGINA INICIAL AQUI")
-}) 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+
 
 app.listen(8000,() => {
     console.log("Servidor iniciado com sucesso: http://localhost:8000")
@@ -33,6 +35,13 @@ pool.connect((err, client, release) => {
     }
   });
 
+ app.get("/", (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+
+
+
 
 
 // CONSULTA DE TESTE DO BANCO DE DADOS , IRÁ RETORNAR TODOS OS ALUNOS CADASTRADOS NO BANCO DE DADOS
@@ -47,4 +56,37 @@ pool.connect((err, client, release) => {
         console.error('Erro ao executar a consulta:', error);
         res.status(500).send('Erro ao executar a consulta.');
     }
+})
+
+app.get("/aluno/:matricula", async (req, res) => {
+  try {
+      const matricula = req.params.matricula;
+      const query = 'SELECT * FROM ALUNO WHERE MATRICULA = $1';
+      const result = await pool.query(query, [matricula]);
+
+      if (result.rows.length === 0) {
+          return res.status(404).send('Aluno não encontrado.');
+      }
+
+      const aluno = result.rows[0];
+      res.send(aluno);
+  } catch (error) {
+      console.error('Erro ao executar a consulta:', error);
+      res.status(500).send('Erro ao executar a consulta.');
+  }
 });
+
+app.post("/buscar-aluno", async (req, res) => {
+  try {
+      const matricula = req.body.matricula;
+      res.redirect(`/aluno/${matricula}`);
+  } catch (error) {
+      console.error('Erro ao buscar aluno:', error);
+      res.status(500).send('Erro ao buscar aluno.');
+  }
+});
+
+
+
+
+;
