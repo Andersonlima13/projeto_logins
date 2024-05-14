@@ -76,10 +76,23 @@ app.get("/aluno/:matricula", async (req, res) => {
   }
 });
 
+app.get("/resultado.html", (req, res) => {
+  res.sendFile(__dirname + '/resultado.html');
+});
+
+
 app.post("/buscar-aluno", async (req, res) => {
   try {
       const matricula = req.body.matricula;
-      res.redirect(`/aluno/${matricula}`);
+      const query = 'SELECT * FROM ALUNO WHERE MATRICULA = $1';
+      const result = await pool.query(query, [matricula]);
+
+      if (result.rows.length === 0) {
+          return res.status(404).send('Aluno não encontrado.');
+      }
+
+      const aluno = result.rows[0];
+      res.redirect(`/resultado.html?nome=${aluno.nome}&turma=${aluno.turma}&unidade=${aluno.unidade}&email=${aluno.email}`);
   } catch (error) {
       console.error('Erro ao buscar aluno:', error);
       res.status(500).send('Erro ao buscar aluno.');

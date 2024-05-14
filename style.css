@@ -1,0 +1,11 @@
+/* styles.css */
+.resultado {
+    margin-top: 20px;
+}
+
+.campo {
+    display: inline-block;
+    width: 150px; /* Defina a largura desejada para cada coluna */
+    margin-right: 10px;
+    font-weight: bold;
+}

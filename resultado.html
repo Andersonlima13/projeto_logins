@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Consulta</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Adicione o arquivo de estilo CSS -->
+</head>
+<body>
+    <h1>Resultado da Consulta</h1>
+    <div class="resultado">
+        <div class="campo">Nome: <span id="nome"></span></div>
+        <div class="campo">Turma: <span id="turma"></span></div>
+        <div class="campo">Unidade: <span id="unidade"></span></div>
+        <div class="campo">Google for education: <span id="email"></span></div>
+        <div class="campo">Senha Google: <span id="google_senha"></span></div>
+        <div class="campo">Login app vila: <span id="Matricula"></span></div>
+        <div class="campo">Senha App vila: <span id="data_nascimento"></span></div>
+        <div class="campo">Login sfb: <span id="Login_sfb"></span></div>
+        <div class="campo">Senha sfb: <span id="Senha_sfb"></span></div>
+        <div class="campo">Login Evolucional: <span id="Login_evolucional"></span></div>
+        <div class="campo">Senha Evolucional: <span id="Senha_evolucional"></span></div>
+        <div class="campo">Medalhei Email: <span id="email_medalhei"></span></div>
+        <!-- Adicione outras colunas aqui -->
+    </div>
+
+    <script>
+        // Extrai os dados do aluno dos parâmetros de consulta
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById('nome').innerText = params.get('nome');
+        document.getElementById('turma').innerText = params.get('turma');
+        document.getElementById('unidade').innerText = params.get('unidade');
+        document.getElementById('email').innerText = params.get('email');
+        document.getElementById('google_senha').innerText = params.get('GOOGLE_SENHA');
+        document.getElementById('Matricula').innerText = params.get('MATRICULA');
+        document.getElementById('data_nascimento').innerText = params.get('SENHA_VILA');
+        document.getElementById('Login_sfb').innerText = params.get('SFB_LOGIN');
+        document.getElementById('Senha_sfb').innerText = params.get('SFB_SENHA');
+        document.getElementById('Login_evolucional').innerText = params.get('LOGIN_EVOLUCIONAL');
+        document.getElementById('Senha_evolucional').innerText = params.get('SENHA_EVOLUCIONAL');
+        document.getElementById('email_medalhei').innerText = params.get('MEDALHEI_EMAIL');
+
+        // Extrair e exibir outras colunas, se necessário
+    </script>
+</body>
+</html>
