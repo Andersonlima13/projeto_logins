@@ -92,7 +92,10 @@ app.post("/buscar-aluno", async (req, res) => {
       }
 
       const aluno = result.rows[0];
-      res.redirect(`/resultado.html?nome=${aluno.nome}&turma=${aluno.turma}&unidade=${aluno.unidade}&email=${aluno.email}`);
+      res.redirect(`/resultado.html?nome=${aluno.nome}&serie=${aluno.serie}&unidade=${aluno.unidade}&email=${aluno.email}
+      &senha_email=${aluno.senha_email}&matricula=${aluno.matricula}&senha_app=${aluno.senha_app}&sfb=${aluno.sfb}&senha_sfb=${aluno.senha_sfb}
+      &richmond=${aluno.richmond}&senha_r=${aluno.senha_r}&arvore_senha=${aluno.arvore_senha}&evolucional=${aluno.evolucional}
+      &senha_evo=${aluno.senha_evo}&medalhei=${aluno.medalhei}`);
   } catch (error) {
       console.error('Erro ao buscar aluno:', error);
       res.status(500).send('Erro ao buscar aluno.');
