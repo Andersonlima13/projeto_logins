@@ -25,7 +25,7 @@ const pool = new Pool({
 })
 
 
- // CONEXAO DB
+ // CONEXAO DB 
 pool.connect((err, client, release) => {
     if (err) {
       console.error('Erro ao conectar ao banco de dados:', err);
