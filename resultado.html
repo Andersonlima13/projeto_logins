@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado da Consulta</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Adicione o arquivo de estilo CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Resultado da Consulta</h1>
@@ -26,11 +26,12 @@
         <div class="campo">Medalhei: <span id="medalhei"></span></div>
 
 
-        <!-- Adicione outras colunas aqui -->
+        <!--- CAMPOS DE LOGIN RETORNADOS DO SCRIPT-->
     </div>
 
     <script>
-        // Extrai os dados do aluno dos parâmetros de consulta
+        // script para extrair os dados do aluno por parâmetros na consulta sql
+
         const params = new URLSearchParams(window.location.search);
         document.getElementById('nome').innerText = params.get('nome');
         document.getElementById('serie').innerText = params.get('serie');
@@ -47,7 +48,7 @@
         document.getElementById('evolucional').innerText = params.get('evolucional');
         document.getElementById('senha_evo').innerText = params.get('senha_evo');
         document.getElementById('medalhei').innerText = params.get('medalhei');
-        // Extrair e exibir outras colunas, se necessário
+       
     </script>
 </body>
 </html>
