@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+app.set('view engine', 'ejs');
 const bodyParser = require('body-parser'); // Para analisar o corpo da solicitação POST
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -60,7 +61,7 @@ pool.connect((err, client, release) => {
 */
 
 // Requisição de busca de alunos pela matricula
-
+/*
 app.get("/aluno/:matricula", async (req, res) => {
   try {
       const matricula = req.params.matricula;
@@ -78,11 +79,11 @@ app.get("/aluno/:matricula", async (req, res) => {
       res.status(500).send('Erro ao executar a consulta.');
   }
 });
-
+*/
 
 // IDEIA DE COMO DEVE FUNCIONAR O MÉTODO GET DE ALUNOS , RETORNANDO UM HTML DINAMICO com OS DADOS DO ALUN0
 
-/*app.get("/aluno/:matricula", async (req, res) => {
+app.get("/aluno/:matricula", async (req, res) => {
   try {
       const matricula = req.params.matricula;
       const query = 'SELECT * FROM ALUNO WHERE MATRICULA = $1';
@@ -93,28 +94,10 @@ app.get("/aluno/:matricula", async (req, res) => {
       }
 
       const aluno = result.rows[0];
+      
 
-      // Criando uma string HTML dinâmica com os dados do aluno
-      let htmlResponse = `
-        <html>
-          <head>
-            <title>Detalhes do Aluno</title>
-            <link rel="stylesheet" href="style.css">
-          </head>
-          <body>
-            <h1>Detalhes do Aluno</h1>
-            <div class="aluno-details">
-              <p>Nome: ${aluno.nome}</p>
-              <p>Matrícula: ${aluno.matricula}</p>
-              <p>Curso: ${aluno.email}</p>
-              <!-- Adicione mais campos conforme necessário -->
-            </div>
-          </body>
-        </html>
-      `;
-
-      // Enviando a resposta HTML
-      res.send(htmlResponse);
+      // resultado renderizado na view aluno
+      res.render('aluno', { aluno });
 
   } catch (error) {
       console.error('Erro ao executar a consulta:', error);
@@ -122,14 +105,16 @@ app.get("/aluno/:matricula", async (req, res) => {
   }
 });
 
-*/
+
 
 
 // Requisição para retornar o html, buscando o resultado das plataformas encontradas (( MUDAR))
+/*
 
 app.get("/resultado.html", (req, res) => {
   res.sendFile(__dirname + '/resultado.html');
 });
+/*
 
 
 
@@ -140,7 +125,7 @@ app.get("/resultado.html", (req, res) => {
    MESMO NA URL 
 */
 
-app.post("/buscar-aluno", async (req, res) => {
+/*app.post("/buscar-aluno", async (req, res) => {
   try {
       const matricula = req.body.matricula;
       const query = 'SELECT * FROM ALUNO WHERE MATRICULA = $1';
@@ -160,7 +145,7 @@ app.post("/buscar-aluno", async (req, res) => {
       res.status(500).send('Erro ao buscar aluno.');
   }
 });
-
+*/
 
 
 

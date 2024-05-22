@@ -10,10 +10,21 @@
 </head>
 <body>
     <h1>Buscar Aluno por Matrícula</h1>
-    <form class="fomulario" action="/buscar-aluno" method="POST">
+    <form class="fomulario" action="/aluno" method="GET">
         <label for="matricula">Matrícula do Aluno:</label>
         <input type="text" id="matricula" name="matricula" required>
-        <button class="botao" type="submit">Buscar Aluno</button>
+        <button class="botao" id="buscar-aluno" type="button">Buscar Aluno</button>
     </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('buscar-aluno').addEventListener('click', function() {
+                const matricula = document.getElementById('matricula').value;
+                window.location.href = `/aluno/${matricula}`;
+            });
+        });
+    </script>
+
+
 </body>
 </html>
