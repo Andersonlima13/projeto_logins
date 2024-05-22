@@ -1,4 +1,32 @@
-.formulario{
+body, html {
+    height: 60%;
+    margin: 0;
+    padding: 0;
+    display: flex;
     justify-content: center;
-    background: rgb(135, 135, 172);
+    align-items: center;
+}
+
+
+.input_container{
+    background-color: #1E395F;
+    height: 100%;
+    width: 100%;
+}
+
+.logo-container{
+    background-color: #32EFCB;
+    height: 100%;
+    width: 100%;
+}
+
+
+.container {
+    display: flex;
+    background-color: #93b0a1;
+    text-align: center;
+    height: 300px;
+    width: 500px;
+    border: 1px solid #1d3335;
+    border-radius: 5px;
 }

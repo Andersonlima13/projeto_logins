@@ -9,18 +9,37 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1>Buscar Aluno por Matrícula</h1>
-    <form class="fomulario" action="/aluno" method="GET">
-        <label for="matricula">Matrícula do Aluno:</label>
-        <input type="text" id="matricula" name="matricula" required>
-        <button class="botao" id="buscar-aluno" type="button">Buscar Aluno</button>
-    </form>
+    <div class="container">
+        <div class="input_container">
+            <h1>Buscar Aluno por Matrícula</h1>
+            <form class="fomulario" action="/aluno" method="GET">
+            <label for="matricula">Matrícula do Aluno:</label>
+            <input type="text" id="matricula" name="matricula" required>
+            <button class="botao" id="buscar-aluno" type="button">Buscar Aluno</button>
+            </form>
+        </div>
+        <div class="logo-container">
+            <p>logo deve ficar aqui</p>
+        </div>
+    </div>
+</body>
+
+
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('buscar-aluno').addEventListener('click', function() {
                 const matricula = document.getElementById('matricula').value;
+
+                if (!matricula.trim()) {
+                window.alert("Por favor, insira um número de matrícula.");
+                return; 
+            }
+                
                 window.location.href = `/aluno/${matricula}`;
+
+                
             });
         });
     </script>
