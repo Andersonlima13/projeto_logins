@@ -36,7 +36,7 @@ pool.connect((err, client, release) => {
 
 
 // renderizar pagina inicial 
-
+/// OBS : MUDAR PARA EJS
  app.get("/", (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
