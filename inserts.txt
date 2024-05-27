@@ -1,6 +1,6 @@
 INSERT INTO ALUNO (NOME, TURMA, UNIDADE, GOOGLE_EMAIL, GOOGLE_SENHA, MATRICULA, SENHA_VILA, SFB_LOGIN, SFB_SENHA, LOGIN_EVOLUCIONAL, SENHA_EVOLUCIONAL, MEDALHEI_EMAIL)
 VALUES 
-('ALIRIA SOPHIA FREITAS DINIZ', '1ª Série A', 'VILA BESSA', 'aliria.diniz@sou.vilacolegio.com.br', 'mudar@1234', 3257, 160409, 'aliria.sophiafreitasdiniz.7', 'ddmmaa', 9580886, 'vila@2024', 'aliria.diniz@sou.vilacolegio.com.br'),
+('ALIRIA SOPHIA FREITAS DINIZ', '1ª Série A', 'VILA BESSA', 'aliria.diniz@sou.vilacolegio.com.br', 'mudar@1234', 3257, 160409, 'aliria.sophiafreitasdiniz.7', 'ddmmaa', '9580886', 'vila@2024', 'aliria.diniz@sou.vilacolegio.com.br'),
 ('ANDRÉ LUIS ALMEIDA DE MOURA', '1ª Série A', 'VILA BESSA', 'andre.moura@sou.vilacolegio.com.br', 'mudar@1234', 2452, 260908, 'andre.luisalmeidademoura.7', 'ddmmaa', 9222340, 'vila@2024', 'andre.moura@sou.vilacolegio.com.br'),
 ('ANDRÉ PIMENTEL CORRALES', '1ª Série A', 'VILA BESSA', 'andre.corrales@sou.vilacolegio.com.br', 'mudar@1234', 3338, 251208, 'andre.pimentelcorrales.7', 'ddmmaa', 3641449, 'vila@2024', 'andre.corrales@sou.vilacolegio.com.br'),
 ('ARTHUR LUIS ARAÚJO DE OLIVEIRA', '1ª Série A', 'VILA BESSA', 'arthur.oliveira@sou.vilacolegio.com.br', 'mudar@1234', 3388, 290708, 'arthur.luisaraujodeoliveira.7', 'ddmmaa', 9259841, 'vila@2024', 'arthur.oliveira@sou.vilacolegio.com.br'),
@@ -231,3 +231,13 @@ VALUES
 ('SAMUEL DE LUCENA RAMALHO', '3ª Série A', 'VILA SUL', 'samuel.sousa@sou.vilacolegio.com.br', 'mudar@1234', '2152', '180206', 'samuel.delucenaramalho', 'ddmmaa', '5449722', '', 'samuel.sousa@sou.vilacolegio.com.br'),
 ('WILLIAM VIEIRA CAMÊLO', '3ª Série A', 'VILA SUL', '', 'mudar@1234', '2205', '140207', 'william.vieiracamelo', 'ddmmaa', '3711735', 'vila@2024', 'william.camelo@sou.vilacolegio.com.br'),
 ('YOHANNA GABRIELLE FERREIRA MACHADO', '3ª Série A', 'VILA SUL', 'yohanna.ferreira@sou.vilacolegio.com.br', 'mudar@1234', '1693', '270407', 'yohannagabrielle.ferreiramachado', 'ddmmaa', '3471225', '', 'yohanna.ferreira@sou.vilacolegio.com.br');
+
+
+
+
+
+
+
+
+
+
