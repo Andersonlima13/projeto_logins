@@ -2,9 +2,11 @@ const express = require('express')
 const app = express()
 app.set('view engine', 'ejs');
 const bodyParser = require('body-parser'); // Para analisar o corpo da solicitação POST
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.listen(8000,() => {console.log("Servidor iniciado com sucesso: http://localhost:8000")})
+//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
+require('dotenv').config();
+
+app.listen(process.env.APP_PORT,process.env.APP_IP, () => {console.log("Servidor iniciado com sucesso!")})
 app.use(express.static(__dirname));
 
 
@@ -13,13 +15,12 @@ app.use(express.static(__dirname));
 
 const { Pool } = require('pg')
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'postgres',
-    password: 'admin',
-    port:5432,
-})
-
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
+});
 
  // CONEXAO DB 
 pool.connect((err, client, release) => {
@@ -37,9 +38,16 @@ pool.connect((err, client, release) => {
 
 // renderizar pagina inicial 
 /// OBS : MUDAR PARA EJS
- app.get("/", (req, res) => {
+/* app.get("/", (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
+*/
+
+app.get("/", async (req,res) => {
+  res.render('index')
+} )
+
+
 
 
 
@@ -81,7 +89,7 @@ app.get("/aluno/:matricula", async (req, res) => {
 });
 */
 
-// IDEIA DE COMO DEVE FUNCIONAR O MÉTODO GET DE ALUNOS , RETORNANDO UM HTML DINAMICO com OS DADOS DO ALUN0
+// método get matriculas , faz uma requisição ao banco de dados , com a matricula que foi passada como input
 
 app.get("/aluno/:matricula", async (req, res) => {
   try {
@@ -104,6 +112,8 @@ app.get("/aluno/:matricula", async (req, res) => {
       res.status(500).send('Erro ao executar a consulta.');
   }
 });
+
+
 
 
 
