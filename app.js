@@ -1,26 +1,22 @@
 const express = require('express')
 const app = express()
+app.set('view engine', 'ejs');
 const bodyParser = require('body-parser'); // Para analisar o corpo da solicitação POST
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.listen(8000,() => {console.log("Servidor iniciado com sucesso: http://localhost:8000")})
+app.use(express.static(__dirname));
 
 
 
-app.listen(8000,() => {
-    console.log("Servidor iniciado com sucesso: http://localhost:8000")
-})
+// Criação do banco pool -> ps : alterar para .env
 
 const { Pool } = require('pg')
-
-
-// MUDAR PARA DOTENV
-
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
-    database: 'PLATAFORMAS_ALUNOS',
-    password: '12345',
+    database: 'postgres',
+    password: 'admin',
     port:5432,
 })
 
@@ -35,17 +31,21 @@ pool.connect((err, client, release) => {
     }
   });
 
+// ---------------------------------- REQUISIÇÕES HTTP ------------------------------ // 
+
+
+
+// renderizar pagina inicial 
+/// OBS : MUDAR PARA EJS
  app.get("/", (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
 
 
-
-
-
 // CONSULTA DE TESTE DO BANCO DE DADOS , IRÁ RETORNAR TODOS OS ALUNOS CADASTRADOS NO BANCO DE DADOS
-  app.get("/Aluno", async (req, res) => {
+
+/*  app.get("/Aluno", async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM ALUNO');
         // 
@@ -58,6 +58,10 @@ pool.connect((err, client, release) => {
     }
 })
 
+*/
+
+// Requisição de busca de alunos pela matricula
+/*
 app.get("/aluno/:matricula", async (req, res) => {
   try {
       const matricula = req.params.matricula;
@@ -69,21 +73,19 @@ app.get("/aluno/:matricula", async (req, res) => {
       }
 
       const aluno = result.rows[0];
-      res.send(aluno);
+      res.send(aluno); // Objeto aluno
   } catch (error) {
       console.error('Erro ao executar a consulta:', error);
       res.status(500).send('Erro ao executar a consulta.');
   }
 });
+*/
 
-app.get("/resultado.html", (req, res) => {
-  res.sendFile(__dirname + '/resultado.html');
-});
+// IDEIA DE COMO DEVE FUNCIONAR O MÉTODO GET DE ALUNOS , RETORNANDO UM HTML DINAMICO com OS DADOS DO ALUN0
 
-
-app.post("/buscar-aluno", async (req, res) => {
+app.get("/aluno/:matricula", async (req, res) => {
   try {
-      const matricula = req.body.matricula;
+      const matricula = req.params.matricula;
       const query = 'SELECT * FROM ALUNO WHERE MATRICULA = $1';
       const result = await pool.query(query, [matricula]);
 
@@ -91,6 +93,48 @@ app.post("/buscar-aluno", async (req, res) => {
           return res.status(404).send('Aluno não encontrado.');
       }
 
+      const aluno = result.rows[0];
+      
+
+      // resultado renderizado na view aluno
+      res.render('aluno', { aluno });
+
+  } catch (error) {
+      console.error('Erro ao executar a consulta:', error);
+      res.status(500).send('Erro ao executar a consulta.');
+  }
+});
+
+
+
+
+// Requisição para retornar o html, buscando o resultado das plataformas encontradas (( MUDAR))
+/*
+
+app.get("/resultado.html", (req, res) => {
+  res.sendFile(__dirname + '/resultado.html');
+});
+/*
+
+
+
+// Método post para subir a matricula que foi passada como input pelo usuario
+
+/* PS : O MÉTODO POST AQUI DEVE SUMIR , PASSANDO A RESPONSAVILIDADE DE RETORNAR AS INFORMAÇÕES
+   DO USUÁRIO PELO METODO GET -> ALUNO/MATRICULA , ASSIM FICANDO EXPOSTO APENAS A MATRICULA DO 
+   MESMO NA URL 
+*/
+
+/*app.post("/buscar-aluno", async (req, res) => {
+  try {
+      const matricula = req.body.matricula;
+      const query = 'SELECT * FROM ALUNO WHERE MATRICULA = $1';
+      const result = await pool.query(query, [matricula]);
+      if (result.rows.length === 0) {
+          return res.status(404).send('Aluno não encontrado.');
+      }
+// Usuário é redirecionado para o caminho da matricula passada ( com cada parametro relativo no banco de dados)
+//ps -> mudar a url por segurança -> o resultado retorna os todos os dados no html , e deve retornar apenas a matricula
       const aluno = result.rows[0];
       res.redirect(`/resultado.html?nome=${aluno.nome}&serie=${aluno.serie}&unidade=${aluno.unidade}&email=${aluno.email}
       &senha_email=${aluno.senha_email}&matricula=${aluno.matricula}&senha_app=${aluno.senha_app}&sfb=${aluno.sfb}&senha_sfb=${aluno.senha_sfb}
@@ -101,8 +145,7 @@ app.post("/buscar-aluno", async (req, res) => {
       res.status(500).send('Erro ao buscar aluno.');
   }
 });
+*/
 
 
 
-
-;
