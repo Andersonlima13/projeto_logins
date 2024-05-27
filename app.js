@@ -47,6 +47,11 @@ app.get("/", async (req,res) => {
   res.render('index')
 } )
 
+app.get("/teste", async (req,res) => {
+  res.render('teste')
+} )
+
+
 
 
 
