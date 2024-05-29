@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Consulta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Resultado da Consulta</h1>
+    <div class="resultado">
+        <div class="campo">Nome: <span id="nome"></span></div>
+        <div class="campo">Serie: <span id="serie"></span></div>
+        <div class="campo">Unidade: <span id="unidade"></span></div>
+        <div class="campo">Email: <span id="email"></span></div>
+        <div class="campo">Senha Email: <span id="senha_email"></span></div>
+        <div class="campo">Login app vila: <span id="matricula"></span></div>
+        <div class="campo">Senha App vila: <span id="senha_app"></span></div>
+        <div class="campo">Login sfb: <span id="sfb"></span></div>
+        <div class="campo">Senha sfb: <span id="senha_sfb"></span></div>
+        <div class="campo">Richmond: <span id="richmond"></span></div>
+        <div class="campo">Senha Richmond: <span id="senha_r"></span></div>
+        <div class="campo">Senha Arvore: <span id="arvore_senha"></span></div>
+        <div class="campo">Evolucional: <span id="evolucional"></span></div>
+        <div class="campo">Senha Evolucional <span id="senha_evo"></span></div>
+        <div class="campo">Medalhei: <span id="medalhei"></span></div>
+
+    </div>
+
+    <script>
+        // script para extrair os dados do aluno por parâmetros na consulta sql
+
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById('nome').innerText = params.get('nome');
+        document.getElementById('serie').innerText = params.get('serie');
+        document.getElementById('unidade').innerText = params.get('unidade');
+        document.getElementById('email').innerText = params.get('email');
+        document.getElementById('senha_email').innerText = params.get('senha_email');
+        document.getElementById('matricula').innerText = params.get('matricula');
+        document.getElementById('senha_app').innerText = params.get('senha_app');
+        document.getElementById('sfb').innerText = params.get('sfb');
+        document.getElementById('senha_sfb').innerText = params.get('senha_sfb');
+        document.getElementById('richmond').innerText = params.get('richmond');
+        document.getElementById('senha_r').innerText = params.get('senha_r');
+        document.getElementById('arvore_senha').innerText = params.get('arvore_senha');
+        document.getElementById('evolucional').innerText = params.get('evolucional');
+        document.getElementById('senha_evo').innerText = params.get('senha_evo');
+        document.getElementById('medalhei').innerText = params.get('medalhei');
+       
+    </script>
+</body>
+</html>
