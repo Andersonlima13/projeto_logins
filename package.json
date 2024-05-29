@@ -9,12 +9,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "archiver": "^7.0.1",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "hbs": "^4.2.0",
+    "html-pdf": "^3.0.1",
     "mysql": "^2.18.1",
-    "pg": "^8.11.5"
+    "pg": "^8.11.5",
+    "puppeteer": "^22.10.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
