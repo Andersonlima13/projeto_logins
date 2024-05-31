@@ -6,10 +6,10 @@ const bodyParser = require('body-parser'); // Para analisar o corpo da solicita�
 //app.use(bodyParser.json());
 require('dotenv').config();
 //const archiver = require('archiver');
-//const path = require('path');
-//const puppeteer = require('puppeteer');
-//const ejs = require('ejs');
-app.listen(process.env.APP_PORT, process.env.APP_IP, () => {console.log("Servidor iniciado com sucesso!")})
+const path = require('path');
+const puppeteer = require('puppeteer');
+const ejs = require('ejs');
+app.listen(process.env.APP_PORT, () => {console.log("Servidor iniciado com sucesso!")})
 app.use(express.static(__dirname));
 //const fs = require('fs');
 
@@ -124,6 +124,55 @@ app.get("/aluno/:matricula", async (req, res) => {
       res.status(500).send('Erro ao executar a consulta.');
   }
 });
+
+
+
+app.get("/aluno/:matricula/download", async (req, res) => {
+  try {
+    const matricula = req.params.matricula;
+    const query = 'SELECT * FROM ALUNO WHERE MATRICULA = $1';
+    const result = await pool.query(query, [matricula]);
+
+    if (result.rows.length === 0) {
+      return res.status(404).send('Aluno não encontrado.');
+    }
+
+    const aluno = result.rows[0];
+
+    // Configuração do Puppeteer
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    const ejsFilePath = path.join(__dirname, 'views', 'aluno.ejs');
+
+    // Renderiza a página aluno.ejs com os dados do aluno
+    const html = await ejs.renderFile(ejsFilePath, { aluno });
+
+    // Gera o PDF a partir do HTML renderizado
+    await page.setContent(html);
+    const pdfBuffer = await page.pdf({ format: 'A4' });
+
+    // Fecha o navegador Puppeteer
+    await browser.close();
+
+    // Define os headers para o download do PDF
+    res.setHeader('Content-disposition', 'attachment; filename=aluno.pdf');
+    res.setHeader('Content-type', 'application/pdf');
+
+    // Envia o PDF como resposta
+    res.send(pdfBuffer);
+
+  } catch (error) {
+    console.error('Erro ao executar a consulta:', error);
+    res.status(500).send('Erro ao executar a consulta.');
+  }
+});
+
+
+
+
+
+
+
 
 /*app.get("/alunos/download", async (req, res) => {
   try {
