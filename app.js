@@ -124,6 +124,7 @@ app.get("/alunos", async (req, res) => {
 
 
 
+<<<<<<< HEAD
   app.get("/downloadAllPDFs", async (req, res) => {
     try {
       const query = 'SELECT * FROM ALUNO';
@@ -199,4 +200,81 @@ app.get("/alunos", async (req, res) => {
 
 
 
+=======
+
+
+
+
+
+/*app.get("/alunos/download", async (req, res) => {
+  try {
+    const query = 'SELECT * FROM ALUNO';
+    const result = await pool.query(query);
+
+    if (result.rows.length === 0) {
+      return res.status(404).send('Nenhum aluno encontrado.');
+    }
+
+    const alunos = result.rows;
+
+    // Crie um arquivo ZIP temporário
+    const zipPath = './alunos.zip';
+    const output = fs.createWriteStream(zipPath);
+    const archive = archiver('zip');
+
+    output.on('close', () => {
+      // Envie o arquivo ZIP como resposta
+      res.download(zipPath, 'alunos.zip', (err) => {
+        if (err) {
+          console.error('Erro ao enviar o arquivo ZIP:', err);
+          res.status(500).send('Erro ao enviar o arquivo ZIP.');
+        }
+        // Remova o arquivo ZIP temporário depois de enviado
+        fs.unlinkSync(zipPath);
+      });
+    });
+
+    archive.pipe(output);
+
+    // Gere PDFs para cada aluno e adicione ao arquivo ZIP
+    for (let i = 0; i < alunos.length; i++) {
+      const aluno = alunos[i];
+      const pdfPath = path.join(__dirname, `aluno_${i}.pdf`);
+
+      // Renderize o arquivo EJS
+      const renderedHTML = ejs.renderFile(path.join(__dirname, 'views', 'aluno.ejs'), { aluno })
+
+
+      // Inicie o navegador Puppeteer
+      const browser = await puppeteer.launch();
+      const page = await browser.newPage();
+
+      // Acesse a página renderizada e gere o PDF
+      await page.setContent(renderedHTML);
+      await page.pdf({ path: pdfPath, format: 'A4' });
+
+      // Feche o navegador Puppeteer
+      await browser.close();
+
+      // Adicione o PDF ao arquivo ZIP
+      archive.append(fs.createReadStream(pdfPath), { name: `aluno_${i}.pdf` });
+
+      // Exclua o arquivo PDF temporário
+      fs.unlinkSync(pdfPath);
+    }
+
+    // Finalize o arquivo ZIP
+    archive.finalize();
+
+  } catch (error) {
+    console.error('Erro ao executar a consulta:', error);
+    res.status(500).send('Erro ao executar a consulta.');
+  }
+});
+
+
+
+*/
+
+>>>>>>> e288e40fb7a083be8543ce76b6a0e39b79a75ebe
 
