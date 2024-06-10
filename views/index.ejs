@@ -9,8 +9,10 @@
      <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css" rel="stylesheet"/>
      <link rel="stylesheet" href="/css/index.css">
      
+     
  </head>
  <body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha512-6HmJ9Y5PZWQVCd4KUwIaSgtDskfsykB+Fvm8Nq98GVCMHstaVoX9jqDdwSyGCbmJy5eLs/DXgDE3SXRS+2B2yA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
  <section class="h-100 gradient-form" style="background: linear-gradient(90deg, rgba(30,57,95,1) 1%, rgba(50,239,203,1) 100%);
  ">
    <div class="container py-5 h-100" >
@@ -39,6 +41,17 @@
                    <div class="text-center pt-1 mb-5 pb-1">
                      <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg btn-rounded" type="button" id="buscar-aluno" >Buscar</button>
                    </div>
+                   <!-- <div class="text-center pt-1 mb-5 pb-1">
+                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-danger btn-block fa-lg" type="button" onclick="gerarpdf()"> botao</button>
+                  
+
+                 
+
+
+
+
+                  </div>
+                  --->
  
     
  
@@ -67,20 +80,38 @@
  
  
      <script>
-         document.addEventListener('DOMContentLoaded', function() {
-             document.getElementById('buscar-aluno').addEventListener('click', function() {
-                 const matricula = document.getElementById('matricula').value;
- 
-                 if (!matricula.trim()) {
-                 window.alert("Por favor, insira um número de matrícula.");
-                 return; 
-             }
-                 
-                 window.location.href = `/aluno/${matricula}`;
- 
-                 
-             });
-         });
+
+
+       document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('buscar-aluno').addEventListener('click', function() {
+            const matricula = document.getElementById('matricula').value;
+
+            if (!matricula.trim()) {
+                window.alert("Insira um número de matrícula ou nome");
+                return; 
+            }
+            
+            window.location.href = `/aluno/${matricula}`;
+        });
+
+        function downloadPdf(matricula) {
+            window.location.href = '/aluno/' + matricula + '/pdf';
+        }
+    });
+        
+
+    
+/*
+      function gerarpdf(){
+        var doc = new jsPDF()
+        doc.fromHTML(`<h1> HTML DE TESTE </h1>`)
+        doc.save(`pdf`)
+
+      }
+
+  */
+
+         
      </script>
  
  

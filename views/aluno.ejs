@@ -34,29 +34,35 @@
                     class="rounded-circle img-fluid" style="width: 150px;">
                   <h5 class="my-3"><%= aluno.nome %></h5>
                   <p class="text-muted mb-1"><%= aluno.serie %></p>
-                  <p class="text-muted mb-4"><%= aluno.matricula %></p>
+                  <p class="text-muted mb-4"><%= aluno.unidade %></p>
                   <div class="d-flex justify-content-center mb-2">
                     <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary"> <a href="/" style="color:azure">Voltar</a> </button>
                     <button id="downloadButton" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary ms-1">IMPRIMIR CARD</button>
-                  </div>
+                  </div> 
                 </div>
               </div>
               <div class="card mb-4 mb-lg-0">
-                
               </div>
+
+              
             </div>
+
+          
+
+
             <div class="col-lg-8">
+              
               <div class="card mb-4">
+                
                 <div class="card-body">
+                  
                   <div class="row">
                     <div class="col-sm-3">
                       <p class="mb-0">Login App Vila</p>
                     </div>
                     <div class="col-sm-9">
                       <p class="text-muted mb-0"><%= aluno.matricula %>
-                      <a href="https://colegiovila.easyschool.com.br/app/login/index.php" target="_blank"> 
-                      <img src="/img/colegio_vila.jpg" alt="login_vila" width="50" height="50">  
-                      </a>  
+                       
                       </p>        
                     </div>
                   </div>
@@ -75,11 +81,7 @@
                     <div class="col-sm-3">
                       <p class="mb-0">Email Institucional</p>
                     </div>
-                    <div class="col-sm-9">
-                      <p class="text-muted mb-0"><%= aluno.matricula %>
-                        <a href="https://accounts.google.com/v3/signin/identifier?elo=1&ifkv=AS5LTARzuFo4MrNZ_AvXURrd7rMUB3d3isxtc8xWUJekubnk2enfU-mjyn6bnILdb4fxB30JSS2fvg&ddm=0&flowName=GlifWebSignIn&flowEntry=ServiceLogin&continue=https%3A%2F%2Faccounts.google.com%2FManageAccount%3Fnc%3D1" target="_blank"> 
-                        <img src="/img/google_logo.jpg" alt="login_googl" width="50" height="50">  
-                        </a>  
+                    <div class="col-sm-9"> 
                       <p class="text-muted mb-0"><%= aluno.email %></p>
                     </div>
                   </div>
@@ -124,9 +126,7 @@
                     </div>
                     <div class="col-sm-9">
                       <p class="text-muted mb-0"><%= aluno.richmond %></p>
-                      <a href="https://richmondlp.com/login" target="_blank"> 
-                        <img src="/img/" alt="login_richmond" width="50" height="50">  
-                        </a> 
+                      
                     </div>
                   </div>
 
@@ -150,9 +150,7 @@
                     </div>
                     <div class="col-sm-9">
                       <p class="text-muted mb-0"><%= aluno.arvore_senha %></p>
-                      <a href="https://app.arvore.com.br/login" target="_blank"> 
-                        <img src="/img/" alt="login_arvore" width="50" height="50">  
-                        </a> 
+                       
                     </div>
                   </div>
 
@@ -214,6 +212,16 @@
   // Converte o conteúdo em pdf , sendo o conteudo todo o html da section
   html2pdf().from(content).set({ filename: filename }).save();
 });
+
+function gerarpdf(){
+        var doc = new jsPDF()
+        doc.fromHTML(`<h1> HTML DE TESTE </h1>`)
+        doc.save(`pdf`)
+
+      }
+
+
+    
         </script>
     
 </body>
