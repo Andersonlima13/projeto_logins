@@ -1,11 +1,12 @@
- <!--- Pagina inicial , busca de alunos -->
 
- <!DOCTYPE html>
+ <!--- Pagina inicial , busca de alunos -->
+<!DOCTYPE html>
  <html lang="en">
  <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Página Inicial</title>
+     <title>Plataformas Vila</title>
+     <link rel="icon" href="/img/vila_favicon.png" type="image/x-icon">
      <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css" rel="stylesheet"/>
      <link rel="stylesheet" href="/css/index.css">
      
@@ -23,23 +24,26 @@
              <div class="col-lg-6 rounded-5" id="input-container">
                <div class="card-body p-md-5 mx-md-4">
  
-                 <div class="text-center">
+                 <div class="">
                    <h4 class="mt-1 mb-5 pb-1 fw-bold">Buscar acesso de aluno</h4>
                  </div>
  
                  <form action="/aluno" method="GET">
                  
  
-                   <div data-mdb-input-init class="form-outline mb-4">
-                     <input type="text" name="matricula" id="matricula" class="form-control border"
-                       placeholder="Insira um número valido de matricúla" />
-                     <label class="form-label text-black fw-bold" for="form2Example11">Matricula</label>
+                   <div data-mdb-input-init class="form-outline mb-4">              
+                    <select class="border-0" name="searchType" required style="width: 100px; height: 28px;">
+                      <option value="matricula">Matrícula</option>
+                      <option value="nome">Nome</option>
+                      
+                    </select>
+                    <input class="rounded-1 border-0" type="text" name="param" id="param" placeholder="Buscar ..." oninput="buscarSugestoes()" required>
                    </div>
- 
+                  
                    
  
                    <div class="text-center pt-1 mb-5 pb-1">
-                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg btn-rounded" type="button" id="buscar-aluno" >Buscar</button>
+                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg" type="submit" id="buscar-aluno" style="width: 80%; height: 40px;">Buscar</button>
                    </div>
                    <!-- <div class="text-center pt-1 mb-5 pb-1">
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-danger btn-block fa-lg" type="button" onclick="gerarpdf()"> botao</button>
@@ -62,11 +66,10 @@
              <div class="col-lg-6 d-flex align-items-center rounded-5" id="logo-container">
                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
                 <img src="/img/logo_vila.png"
-                style="width: 280px;" alt="logo">
-                 <p class="small mb-1 pt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                style="width: 350px;" alt="logo">
+                
                </div>
+               
              </div>
            </div>
          </div>
@@ -81,7 +84,7 @@
  
      <script>
 
-
+ 
        document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('buscar-aluno').addEventListener('click', function() {
             const matricula = document.getElementById('matricula').value;
@@ -98,6 +101,10 @@
             window.location.href = '/aluno/' + matricula + '/pdf';
         }
     });
+
+
+
+    
         
 
     
@@ -121,3 +128,4 @@
  
  
  
+
