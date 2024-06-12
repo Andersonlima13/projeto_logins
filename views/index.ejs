@@ -31,13 +31,13 @@
                  <form action="/aluno" method="GET">
                  
  
-                   <div data-mdb-input-init class="form-outline mb-4">              
-                    <select class="border-0" name="searchType" required style="width: 100px; height: 28px;">
+                   <div data-mdb-input-init class="form-outline mb-4 border-2">              
+                    <select class="border-2 border-primary rounded-1 fw-bold" name="searchType" required style="width: 90px; height: 32px;">
                       <option value="matricula">Matrícula</option>
                       <option value="nome">Nome</option>
-                      
+                      <input class="rounded-1 border-2 border-primary fw-bold" type="text" name="param" id="param" placeholder="Buscar ..." oninput="buscarSugestoes()" required>
                     </select>
-                    <input class="rounded-1 border-0" type="text" name="param" id="param" placeholder="Buscar ..." oninput="buscarSugestoes()" required>
+                    
                    </div>
                   
                    
@@ -66,9 +66,12 @@
              <div class="col-lg-6 d-flex align-items-center rounded-5" id="logo-container">
                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
                 <img src="/img/logo_vila.png"
-                style="width: 350px;" alt="logo">
-                
+                style="width: 320px;" alt="logo">
+                <P class="pt-4">Ferramenta para consulta de logins das nossas plataformas digitais.<br> <b> Equipe de 
+                  TI & TE Colegio vila.
+                </P>
                </div>
+               
                
              </div>
            </div>

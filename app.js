@@ -157,8 +157,9 @@ app.get("/alunos", async (req, res) => {
       const result = await pool.query(query, values);
   
       if (result.rows.length === 0) {
-        return res.status(404).send('Aluno não encontrado.');
+        return res.status(404).render('error');
       }
+
   
       const aluno = result.rows[0];
       res.render('aluno', { aluno });
