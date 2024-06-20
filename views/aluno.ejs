@@ -11,6 +11,10 @@
 
 </head>
 <body>
+  
+  <! -- Funções de restrição ( não aparecer plataformas para turmas que nao tem acesso as mesmas)
+    devem ser remodeladas para uma função por segmento , ao inves de plataformas, aproveitando 
+    especie de polimorfismo >
 
   <% 
   // Função para verificar se as serie do aluno possui acesso ao evo , se não , o login não é renderizado 
@@ -21,6 +25,7 @@
   // numero ( serie ) que se aplica a condição 
   const serie_fund = ["6", "7", "8"];
 %>
+
 
 <% 
   // Função para verificar se as serie do aluno possui acesso ao richmond , se não , o login não é renderizado 
