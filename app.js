@@ -45,8 +45,15 @@ pool.connect((err, client, release) => {
 
 
 
+
+app.get("/Home", async (req,res) => {
+  res.render('Home')
+} )
+
+
+
 app.get("/", async (req,res) => {
-  res.render('index')
+  res.render('index' , { alunos : []})
 } )
 
 
@@ -132,7 +139,7 @@ app.get("/alunos", async (req, res) => {
 
 
 
-  
+
   app.get("/aluno", async (req, res) => {
     try {
       const searchType = req.query.searchType;
@@ -168,7 +175,6 @@ app.get("/alunos", async (req, res) => {
       res.status(500).send('Erro ao executar a consulta.');
     }
   });
-
 
 
 

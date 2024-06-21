@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(90deg, rgba(30,57,95,1) 1%, rgba(50,239,203,1) 100%);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Faz com que a página ocupe toda a altura da tela */
+}
+
+
+.text-top{
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
+}
+
+
+
+.container {
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    color:#ffff;
+    max-width: 800px;
+    background-color: #1E395F;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.icon-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.icon {
+    text-align: center;
+    width: 100px;
+    margin: 20px;
+}
+
+.icon img {
+    width: 100px; /* ajuste o tamanho conforme necessário */
+    height: 100px; /* ajuste o tamanho conforme necessário */
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.icon p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 10px; /* Espaço entre o ícone e o texto */
+    white-space: normal;
+}
+
+
+.icon:hover {
+    transform: scale(1.1); /* Aumenta o tamanho do ícone ao passar o mouse */
+    background-color: rgba(255, 255, 255, 0.1); /* Adiciona uma cor de fundo ao passar o mouse */
+    border-radius: 8px;
+}
+
+.icon img {
+    width: 100px; /* ajuste o tamanho conforme necessário */
+    height: 100px; /* ajuste o tamanho conforme necessário */
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
