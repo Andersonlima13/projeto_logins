@@ -60,6 +60,28 @@
     
  
                  </form>
+
+                 <div>
+                  <% if (alunos && alunos.length > 0) { %>
+                    <h5>Resultados da Busca:</h5>
+                    <ul>
+                      <% alunos.forEach(aluno => { %>
+                        <li>
+                          <h6><%= aluno.nome %></h6>
+                          <p>Matrícula: <%= aluno.matricula %></p>
+                          <p>Série: <%= aluno.serie %></p>
+                          <p>Unidade: <%= aluno.unidade %></p>
+                          <!-- Adicione mais campos conforme necessário -->
+                        </li>
+                      <% }) %>
+                    </ul>
+                  <% } else if (typeof alunos !== 'undefined') { %>
+                    <p>Nenhum aluno encontrado.</p>
+                  <% } %>
+                </div>
+
+
+
  
                </div>
              </div>
@@ -67,7 +89,7 @@
                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
                 <img src="/img/logo_vila.png"
                 style="width: 320px;" alt="logo">
-                <P class="pt-4">Ferramenta para consulta de logins das nossas plataformas digitais.<br> <b> Equipe de 
+                <P class="pt-4">Ferramenta para consulta de logins de nossas plataformas digitais.<br> <b> Equipe de 
                   TI & TE Colegio vila.
                 </P>
                </div>

@@ -11,6 +11,48 @@
 
 </head>
 <body>
+  
+  <! -- Funções de restrição ( não aparecer plataformas para turmas que nao tem acesso as mesmas)
+    devem ser remodeladas para uma função por segmento , ao inves de plataformas, aproveitando 
+    especie de polimorfismo >
+
+  <% 
+  // Função para verificar se as serie do aluno possui acesso ao evo , se não , o login não é renderizado 
+  function sem_evolucional(numeros) {
+    return numeros.some(numero => aluno.serie.startsWith(numero));
+  }
+
+  // numero ( serie ) que se aplica a condição 
+  const serie_fund = ["6", "7", "8"];
+%>
+
+
+<% 
+  // Função para verificar se as serie do aluno possui acesso ao richmond , se não , o login não é renderizado 
+  function sem_richmond(numeros) {
+    return numeros.some(numero => aluno.serie.startsWith(numero));
+  }
+
+  // numero ( serie ) que se aplica a condição 
+  const serie_medio_richmond = ["1", "2", "3"];
+%>
+
+<% 
+  // Função para verificar se as serie do aluno possui acesso ao arvore , se não , o login não é renderizado 
+  function sem_arvore(numeros) {
+    return numeros.some(numero => aluno.serie.startsWith(numero));
+  }
+%>
+
+
+
+
+
+ 
+
+
+
+
     <section id="content" style="background: linear-gradient(90deg, rgba(30,57,95,1) 1%, rgba(50,239,203,1) 100%);
     ">>
         <div class="container py-5">
@@ -120,7 +162,7 @@
 
                   <hr>
 
-
+                  <% if (!sem_richmond(serie_medio_richmond)) { %>
                   <div class="row">
                     <div class="col-sm-3">
                       <p class="mb-0">Login Richmond</p>
@@ -139,10 +181,8 @@
                       <p class="text-muted mb-0"><%= aluno.senha_r %></p>
                     </div>
                   </div>
-
-
-
                   <hr>
+                  <% } %>
 
 
                   <div class="row">
@@ -154,11 +194,10 @@
                        
                     </div>
                   </div>
-
-
                   <hr>
 
 
+                  <% if (!sem_evolucional(serie_fund)) { %>
                   <div class="row">
                     <div class="col-sm-3">
                       <p class="mb-0">Login Evolucional</p>
@@ -167,7 +206,9 @@
                       <p class="text-muted mb-0"><%= aluno.evolucional %></p>
                     </div>
                   </div>
+                  
 
+                  
                   <div class="row">
                     <div class="col-sm-3">
                       <p class="mb-0">Senha Evolucional</p>
@@ -176,9 +217,10 @@
                       <p class="text-muted mb-0"><%= aluno.senha_evo %></p>
                     </div>
                   </div>
+                  
 
                   <hr>
-
+                  <% } %>
 
                   <div class="row">
                     <div class="col-sm-3">

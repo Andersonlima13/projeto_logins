@@ -51,9 +51,14 @@ app.get("/Home", async (req,res) => {
 } )
 
 
+<<<<<<< HEAD
 
 app.get("/", async (req,res) => {
   res.render('index' , { alunos : []})
+=======
+app.get("/", async (req,res) => {
+  res.render('index', {alunos: [] })
+>>>>>>> ad94e166120bf5e3903358c6700c869faf2807a3
 } )
 
 
@@ -62,7 +67,7 @@ app.get("/", async (req,res) => {
 
 
 // Requisição de busca de alunos pela matricula
-
+// ***************** metodo principal ultilizado para retornar o aluno buscado ****************
 
 // método get matriculas , faz uma requisição ao banco de dados , com a matricula que foi passada como input
 /*
@@ -107,7 +112,7 @@ app.get("/alunos", async (req, res) => {
 // buscar por aluno ou por matricula 
 
 
-  app.get("/aluno/:param", async (req, res) => {
+/*  app.get("/aluno/:param", async (req, res) => {
     try {
         const param = req.params.param;
         let query, values;
@@ -138,8 +143,71 @@ app.get("/alunos", async (req, res) => {
   });
 
 
+*/
 
 
+app.get("/aluno/:param", async (req, res) => {
+  try {
+      const param = req.params.param;
+      let query, values;
+
+      if (/^\d+$/.test(param)) {
+          // Se o parâmetro for composto apenas por dígitos, considere como matrícula
+          query = 'SELECT * FROM ALUNO WHERE MATRICULA = $1';
+          values = [param];
+
+          const result = await pool.query(query, values);
+
+          if (result.rows.length === 0) {
+              return res.status(404).send('Aluno não encontrado.');
+          }
+
+          const aluno = result.rows[0];
+          res.render('aluno', { aluno });
+      } else {
+          // Caso contrário, considere como nome (usando ILIKE para case-insensitive match)
+          query = 'SELECT * FROM ALUNO WHERE NOME ILIKE $1';
+          values = [`%${param}%`];
+
+          const result = await pool.query(query, values);
+
+          if (result.rows.length === 0) {
+              return res.status(404).send('Aluno não encontrado.');
+          }
+
+          const alunos = result.rows;
+          res.render('index', { alunos });
+      }
+  } catch (error) {
+      console.error('Erro ao executar a consulta:', error);
+      res.status(500).send('Erro ao executar a consulta.');
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> ad94e166120bf5e3903358c6700c869faf2807a3
   app.get("/aluno", async (req, res) => {
     try {
       const searchType = req.query.searchType;
@@ -181,6 +249,19 @@ app.get("/alunos", async (req, res) => {
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+
+>>>>>>> ad94e166120bf5e3903358c6700c869faf2807a3
 /*
   app.get("/downloadAllPDFs", async (req, res) => {
     try {
