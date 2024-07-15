@@ -46,22 +46,26 @@ pool.connect((err, client, release) => {
 
 
 
-app.get("/Home", async (req,res) => {
+app.get("/teste", async (req,res) => {
+  res.render('teste')
+})
+
+
+
+app.get("/", async (req,res) => {
   res.render('Home')
 } )
 
 
-<<<<<<< HEAD
 
-app.get("/", async (req,res) => {
-  res.render('index' , { alunos : []})
-=======
-app.get("/", async (req,res) => {
+app.get("/Home", async (req,res) => {
   res.render('index', {alunos: [] })
->>>>>>> ad94e166120bf5e3903358c6700c869faf2807a3
 } )
 
 
+app.get("/dashboards", async (req,res) => {
+  res.render('dashboards')
+} )
 
 
 
@@ -104,7 +108,7 @@ app.get("/alunos", async (req, res) => {
       res.json(alunos);
     } catch (error) {
       console.error('Erro ao obter os dados dos alunos:', error);
-      res.status(500).send('Erro ao obter os dados dos alunos.');
+      res.status(500).send('Erro ao obter os dados dods alunos.');
     }
   });
 
@@ -204,10 +208,8 @@ app.get("/aluno/:param", async (req, res) => {
 
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> ad94e166120bf5e3903358c6700c869faf2807a3
+
   app.get("/aluno", async (req, res) => {
     try {
       const searchType = req.query.searchType;
@@ -249,19 +251,9 @@ app.get("/aluno/:param", async (req, res) => {
 
 
 
-<<<<<<< HEAD
-=======
 
 
 
-
-
-
-
-
-
-
->>>>>>> ad94e166120bf5e3903358c6700c869faf2807a3
 /*
   app.get("/downloadAllPDFs", async (req, res) => {
     try {

@@ -61,24 +61,7 @@
  
                  </form>
 
-                 <div>
-                  <% if (alunos && alunos.length > 0) { %>
-                    <h5>Resultados da Busca:</h5>
-                    <ul>
-                      <% alunos.forEach(aluno => { %>
-                        <li>
-                          <h6><%= aluno.nome %></h6>
-                          <p>Matrícula: <%= aluno.matricula %></p>
-                          <p>Série: <%= aluno.serie %></p>
-                          <p>Unidade: <%= aluno.unidade %></p>
-                          <!-- Adicione mais campos conforme necessário -->
-                        </li>
-                      <% }) %>
-                    </ul>
-                  <% } else if (typeof alunos !== 'undefined') { %>
-                    <p>Nenhum aluno encontrado.</p>
-                  <% } %>
-                </div>
+                
 
 
 

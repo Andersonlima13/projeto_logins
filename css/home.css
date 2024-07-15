@@ -9,30 +9,13 @@ body {
     height: 100vh; /* Faz com que a página ocupe toda a altura da tela */
 }
 
-<<<<<<< HEAD
-
-.text-top{
-    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-    0px 8px 13px rgba(0,0,0,0.1),
-    0px 18px 23px rgba(0,0,0,0.1);
-}
-
-
-
 .container {
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-=======
-.container {
->>>>>>> ad94e166120bf5e3903358c6700c869faf2807a3
-    color:#ffff;
+    color: #ffff;
     max-width: 800px;
     background-color: #1E395F;
     padding: 20px;
     border-radius: 8px;
-<<<<<<< HEAD
-=======
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
->>>>>>> ad94e166120bf5e3903358c6700c869faf2807a3
     text-align: center;
 }
 
@@ -51,6 +34,13 @@ h1 {
     text-align: center;
     width: 100px;
     margin: 20px;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Adiciona uma transição suave para o efeito de hover */
+}
+
+.icon:hover {
+    transform: scale(1.1); /* Aumenta o tamanho do ícone ao passar o mouse */
+    background-color: rgba(255, 255, 255, 0.1); /* Adiciona uma cor de fundo ao passar o mouse */
+    border-radius: 8px;
 }
 
 .icon img {
@@ -66,23 +56,4 @@ h1 {
     color: #ffffff;
     margin-top: 10px; /* Espaço entre o ícone e o texto */
     white-space: normal;
-<<<<<<< HEAD
 }
-
-
-.icon:hover {
-    transform: scale(1.1); /* Aumenta o tamanho do ícone ao passar o mouse */
-    background-color: rgba(255, 255, 255, 0.1); /* Adiciona uma cor de fundo ao passar o mouse */
-    border-radius: 8px;
-}
-
-.icon img {
-    width: 100px; /* ajuste o tamanho conforme necessário */
-    height: 100px; /* ajuste o tamanho conforme necessário */
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-=======
-}
->>>>>>> ad94e166120bf5e3903358c6700c869faf2807a3
