@@ -22,7 +22,7 @@
         <nav id='navbar' class="nav-menu">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/teste"><i class="bi bi-house"
+                    <a class="nav-link" aria-current="page" href="/teste"><i class="bi bi-house"
                             aria-hidden="true"></i> Buscar Aluno</a>
                 </li>
                 <li class="nav-item">
@@ -40,8 +40,13 @@
 
     </head>
     <body>
+
+
+
+
+
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha512-6HmJ9Y5PZWQVCd4KUwIaSgtDskfsykB+Fvm8Nq98GVCMHstaVoX9jqDdwSyGCbmJy5eLs/DXgDE3SXRS+2B2yA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <section class="h-100 gradient-form" style="background: linear-gradient(90deg, rgba(30,57,95,1) 1%, rgba(50,239,203,1) 100%);
+    <section class="h-100 gradient-form" style="background: linear-gradient(90deg, rgb(14, 34, 63) 1%, rgb(28, 165, 140) 100%);
     ">
       <div class="container py-5 h-100" >
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -67,6 +72,10 @@
                        
                       </div>
                      
+                        
+
+
+
                       
     
                       <div class="text-center pt-1 mb-5 pb-1">
@@ -107,65 +116,3 @@
         </div>
       </div>
     </section>
-        
-    
-    
-    
-    
-        <script>
-   
-    
-          document.addEventListener('DOMContentLoaded', function() {
-           document.getElementById('buscar-aluno').addEventListener('click', function() {
-               const matricula = document.getElementById('matricula').value;
-   
-               if (!matricula.trim()) {
-                   window.alert("Insira um número de matrícula ou nome");
-                   return; 
-               }
-               
-               window.location.href = `/aluno/${matricula}`;
-           });
-   
-           function downloadPdf(matricula) {
-               window.location.href = '/aluno/' + matricula + '/pdf';
-           }
-       });
-   
-   
-   
-       
-           
-   
-       
-   /*
-         function gerarpdf(){
-           var doc = new jsPDF()
-           doc.fromHTML(`<h1> HTML DE TESTE </h1>`)
-           doc.save(`pdf`)
-   
-         }
-   
-     */
-   
-            
-        </script>
-    
-    
-    </body>
-
-    </main>
-
-    <footer id="footer">
-        <div class="container">
-            <div class="text-center">
-                &copy; Copyright <strong>Anderson Lima 2022</strong>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../static/main.js"></script>
-</body>
-
-</html>
