@@ -9,7 +9,11 @@
   <h1>Lista de Alunos</h1>
   <ul>
     <% alunos.forEach(aluno => { %>
-      <li><%= aluno.nome %> - <%= aluno.matricula %></li>
+      <li>
+        <a href="/aluno/<%= aluno.matricula %>">
+          <%= aluno.nome %> - <%= aluno.matricula %>
+        </a>
+      </li>
     <% }); %>
   </ul>
 </body>
